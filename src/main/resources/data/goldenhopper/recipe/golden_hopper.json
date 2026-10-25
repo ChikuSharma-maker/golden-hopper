@@ -1,0 +1,7 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "redstone",
+  "key": { "G": "minecraft:gold_ingot", "C": "minecraft:chest" },
+  "pattern": ["G G", "GCG", " G "],
+  "result": { "id": "goldenhopper:golden_hopper", "count": 1 }
+}

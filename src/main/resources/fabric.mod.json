@@ -1,0 +1,20 @@
+{
+  "schemaVersion": 1,
+  "id": "goldenhopper",
+  "version": "${version}",
+  "name": "Golden Hopper",
+  "description": "A golden hopper with an adjustable speed, a 7-item filter and an inverted mode, all in a custom screen.",
+  "authors": ["You"],
+  "license": "MIT",
+  "environment": "*",
+  "entrypoints": {
+    "main": ["com.goldenhopper.GoldenHopperMod"],
+    "client": ["com.goldenhopper.GoldenHopperClient"]
+  },
+  "depends": {
+    "fabricloader": ">=0.19.3",
+    "minecraft": ">=26.1",
+    "java": ">=25",
+    "fabric-api": "*"
+  }
+}
