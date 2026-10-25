@@ -32,9 +32,10 @@ public class GoldenHopperScreen extends AbstractContainerScreen<GoldenHopperMenu
         int x = this.leftPos;
         int y = this.topPos;
 
-        StringWidget filterLabel = new StringWidget(x + 8, y + 17, 160, 9,
-                Component.literal("Filter: click a slot holding an item"), this.font);
-        filterLabel.setColor(0xFF404040);
+               StringWidget filterLabel = new StringWidget(x + 8, y + 17, 160, 9,
+                Component.literal("Filter: click a slot holding an item")
+                        .withStyle(style -> style.withColor(0x404040)),
+                this.font);
         this.addRenderableWidget(filterLabel);
 
         // speed row
