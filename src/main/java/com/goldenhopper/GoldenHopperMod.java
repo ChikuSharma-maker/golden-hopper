@@ -1,7 +1,7 @@
 package com.goldenhopper;
 
 import net.fabricmc.api.ModInitializer;
-import net.fabricmc.fabric.api.itemgroup.v1.ItemGroupEvents;
+import net.fabricmc.fabric.api.creativetab.v1.CreativeModeTabEvents;
 import net.minecraft.world.item.CreativeModeTabs;
 
 public class GoldenHopperMod implements ModInitializer {
@@ -9,7 +9,7 @@ public class GoldenHopperMod implements ModInitializer {
     public void onInitialize() {
         ModRegistry.init();
 
-        ItemGroupEvents.modifyEntriesEvent(CreativeModeTabs.REDSTONE_BLOCKS)
-                .register(entries -> entries.accept(ModRegistry.GOLDEN_HOPPER_ITEM));
+        CreativeModeTabEvents.modifyOutputEvent(CreativeModeTabs.REDSTONE_BLOCKS)
+                .register(output -> output.accept(ModRegistry.GOLDEN_HOPPER_ITEM));
     }
 }
