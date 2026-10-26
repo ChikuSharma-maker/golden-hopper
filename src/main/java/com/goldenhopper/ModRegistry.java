@@ -48,6 +48,8 @@ public final class ModRegistry {
     public static void init() {
         // Our block entity extends the vanilla hopper, whose constructor uses the vanilla hopper type.
         // Minecraft checks that type accepts the block it sits in, so we add our block to it.
-        BlockEntityType.HOPPER.addSupportedBlock(GOLDEN_HOPPER);
+               BuiltInRegistries.BLOCK_ENTITY_TYPE
+                .getValue(Identifier.fromNamespaceAndPath("minecraft", "hopper"))
+                .addSupportedBlock(GOLDEN_HOPPER);
     }
 }
