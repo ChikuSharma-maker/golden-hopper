@@ -50,4 +50,4 @@ public final class ModRegistry {
         // Minecraft checks that type accepts the block it sits in, so we add our block to it.
         BlockEntityType.HOPPER.addSupportedBlock(GOLDEN_HOPPER);
     }
-    
+}
