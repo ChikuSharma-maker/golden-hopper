@@ -45,5 +45,9 @@ public final class ModRegistry {
     private ModRegistry() {}
 
     /** Touching this class runs the static registrations above. */
-    public static void init() {}
-}
+    public static void init() {
+        // Our block entity extends the vanilla hopper, whose constructor uses the vanilla hopper type.
+        // Minecraft checks that type accepts the block it sits in, so we add our block to it.
+        BlockEntityType.HOPPER.addSupportedBlock(GOLDEN_HOPPER);
+    }
+    
