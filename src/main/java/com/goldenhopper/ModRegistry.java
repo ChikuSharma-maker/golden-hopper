@@ -1,5 +1,8 @@
 package com.goldenhopper;
 
+import java.lang.reflect.Field;
+import java.lang.reflect.Modifier;
+import java.util.HashSet;
 import java.util.Set;
 
 import net.minecraft.core.Registry;
@@ -47,9 +50,27 @@ public final class ModRegistry {
     /** Touching this class runs the static registrations above. */
     public static void init() {
         // Our block entity extends the vanilla hopper, whose constructor uses the vanilla hopper type.
-        // Minecraft checks that type accepts the block it sits in, so we add our block to it.
-               BuiltInRegistries.BLOCK_ENTITY_TYPE
-                .getValue(Identifier.fromNamespaceAndPath("minecraft", "hopper"))
-                .addSupportedBlock(GOLDEN_HOPPER);
+        // Minecraft checks that this type accepts the block it sits in, so we add our block to it.
+        allowOnVanillaHopperType(GOLDEN_HOPPER);
+    }
+
+    @SuppressWarnings("unchecked")
+    private static void allowOnVanillaHopperType(Block block) {
+        BlockEntityType<?> hopperType = BuiltInRegistries.BLOCK_ENTITY_TYPE
+                .getValue(Identifier.fromNamespaceAndPath("minecraft", "hopper"));
+        try {
+            for (Field field : BlockEntityType.class.getDeclaredFields()) {
+                if (!Modifier.isStatic(field.getModifiers()) && Set.class.isAssignableFrom(field.getType())) {
+                    field.setAccessible(true);
+                    Set<Block> updated = new HashSet<>((Set<Block>) field.get(hopperType));
+                    updated.add(block);
+                    field.set(hopperType, updated);
+                    return;
+                }
+            }
+            throw new IllegalStateException("Golden Hopper: could not find the valid-blocks set in BlockEntityType");
+        } catch (ReflectiveOperationException e) {
+            throw new IllegalStateException("Golden Hopper: could not register block on the hopper type", e);
+        }
     }
 }
