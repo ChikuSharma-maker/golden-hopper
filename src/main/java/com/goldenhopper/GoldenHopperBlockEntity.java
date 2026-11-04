@@ -34,7 +34,7 @@ public class GoldenHopperBlockEntity extends HopperBlockEntity {
     /** Speed multipliers relative to a vanilla hopper (vanilla = 1.0 = 1 item per 8 ticks). */
     public static final double[] SPEEDS = {0.25, 0.5, 1.0, 2.0, 4.0, 8.0};
     public static final String[] SPEED_SHORT = {"x0.25", "x0.5", "x1", "x2", "x4", "x8"};
-    public static final int DEFAULT_SPEED_INDEX = 3; // x2
+    public static final int DEFAULT_SPEED_INDEX = 5; // x8
 
     private static final Codec<List<Item>> ITEM_LIST_CODEC = BuiltInRegistries.ITEM.byNameCodec().listOf();
 
