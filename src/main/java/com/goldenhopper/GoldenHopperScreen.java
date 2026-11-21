@@ -22,8 +22,8 @@ public class GoldenHopperScreen extends AbstractContainerScreen<GoldenHopperMenu
     private int lastInvertShown = -1;
 
     public GoldenHopperScreen(GoldenHopperMenu menu, Inventory inventory, Component title) {
-        super(menu, inventory, title, 176, 212);
-        this.inventoryLabelY = 120;
+        super(menu, inventory, title, 196, 230);
+        this.inventoryLabelY = 138;
     }
 
     @Override
@@ -32,7 +32,7 @@ public class GoldenHopperScreen extends AbstractContainerScreen<GoldenHopperMenu
         int x = this.leftPos;
         int y = this.topPos;
 
-               StringWidget filterLabel = new StringWidget(x + 8, y + 17, 160, 9,
+        StringWidget filterLabel = new StringWidget(x + 8, y + 17, 180, 9,
                 Component.literal("Filter: click a slot holding an item")
                         .withStyle(style -> style.withColor(0x404040)),
                 this.font);
@@ -40,22 +40,22 @@ public class GoldenHopperScreen extends AbstractContainerScreen<GoldenHopperMenu
 
         // speed row
         this.addRenderableWidget(Button.builder(Component.literal("-"), b -> press(GoldenHopperMenu.BTN_SPEED_DOWN))
-                .bounds(x + 8, y + 50, 28, 20)
+                .bounds(x + 8, y + 68, 28, 20)
                 .tooltip(Tooltip.create(Component.literal("Slower")))
                 .build());
         this.speedLabel = this.addRenderableWidget(Button.builder(Component.empty(), b -> { })
-                .bounds(x + 38, y + 50, 100, 20)
+                .bounds(x + 38, y + 68, 120, 20)
                 .tooltip(Tooltip.create(Component.literal("Hopper speed (x1 = normal hopper)")))
                 .build());
         this.speedLabel.active = false;
         this.addRenderableWidget(Button.builder(Component.literal("+"), b -> press(GoldenHopperMenu.BTN_SPEED_UP))
-                .bounds(x + 140, y + 50, 28, 20)
+                .bounds(x + 160, y + 68, 28, 20)
                 .tooltip(Tooltip.create(Component.literal("Faster")))
                 .build());
 
         // inverted row
         this.invertButton = this.addRenderableWidget(Button.builder(Component.empty(), b -> press(GoldenHopperMenu.BTN_INVERT))
-                .bounds(x + 8, y + 72, 160, 20)
+                .bounds(x + 8, y + 90, 180, 20)
                 .build());
 
         this.lastSpeedShown = -1;
