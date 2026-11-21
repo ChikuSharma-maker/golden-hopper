@@ -14,10 +14,10 @@ import net.minecraft.world.item.ItemStack;
  * Menu layout (slot order matters for shift-click):
  *   0..4    the hopper's 5 real item slots
  *   5..40   player inventory + hotbar
- *   41..47  7 "ghost" filter slots (remember an item type, never hold real items)
+ *   41..60  20 "ghost" filter slots (remember an item type, never hold real items)
  *
  * Buttons are sent from the screen with the vanilla "menu button" mechanism (no custom packets):
- *   0 = speed down, 1 = speed up, 2 = toggle inverted, 10..16 = click filter slot 0..6
+ *   0 = speed down, 1 = speed up, 2 = toggle inverted, 10..29 = click filter slot 0..19
  */
 public class GoldenHopperMenu extends AbstractContainerMenu {
 
@@ -56,20 +56,20 @@ public class GoldenHopperMenu extends AbstractContainerMenu {
 
         // 0..4: hopper slots
         for (int i = 0; i < HOPPER_SLOTS; i++) {
-            this.addSlot(new Slot(hopper, i, 44 + i * 18, 98));
+            this.addSlot(new Slot(hopper, i, 53 + i * 18, 116));
         }
         // 5..40: player inventory (3 rows) then hotbar
         for (int row = 0; row < 3; row++) {
             for (int col = 0; col < 9; col++) {
-                this.addSlot(new Slot(inventory, col + row * 9 + 9, 8 + col * 18, 130 + row * 18));
+                this.addSlot(new Slot(inventory, col + row * 9 + 9, 17 + col * 18, 148 + row * 18));
             }
         }
         for (int col = 0; col < 9; col++) {
-            this.addSlot(new Slot(inventory, col, 8 + col * 18, 188));
+            this.addSlot(new Slot(inventory, col, 17 + col * 18, 206));
         }
-        // 41..47: ghost filter slots
+        // 41..60: ghost filter slots, 2 rows of 10
         for (int i = 0; i < FILTER_SLOTS; i++) {
-            this.addSlot(new FilterSlot(filter, i, 25 + i * 18, 28));
+            this.addSlot(new FilterSlot(filter, i, 8 + (i % 10) * 18, 28 + (i / 10) * 18));
         }
 
         this.addDataSlots(data);
