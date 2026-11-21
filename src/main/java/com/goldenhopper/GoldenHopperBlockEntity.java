@@ -24,12 +24,12 @@ import net.minecraft.world.level.storage.ValueOutput;
 
 /**
  * Golden hopper: extends the vanilla hopper (so droppers, chests, comparators, minecarts... all work),
- * adds an adjustable speed, up to 7 filter items and an "inverted" mode.
+ * adds an adjustable speed, up to 20 filter items and an "inverted" mode.
  * Item filtering goes through canPlaceItem(), which vanilla uses for every way an item can enter a hopper.
  */
 public class GoldenHopperBlockEntity extends HopperBlockEntity {
 
-    public static final int FILTER_SIZE = 7;
+    public static final int FILTER_SIZE = 20;
 
     /** Speed multipliers relative to a vanilla hopper (vanilla = 1.0 = 1 item per 8 ticks). */
     public static final double[] SPEEDS = {0.25, 0.5, 1.0, 2.0, 4.0, 8.0};
